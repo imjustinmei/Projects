@@ -81,9 +81,14 @@ class Application(tk.Frame):
     def ent(self):
         global decimal, exp
         decimal, exp = True, True
-        sol = eval(text.get())
+        if text.get() == '':
+            return
+        if text.get()[-1].isdigit():
+            sol = eval(text.get())
+        else:
+            return
         if len(str(sol)) > 12:
-            text.set(sol[:12])
+            text.set(str(sol)[1:8])
         else:
             text.set(sol)
 
